@@ -6,7 +6,7 @@
   command = "npm run build"
   
   # Directory that contains the deploy-ready HTML files and assets
-  publish = "client/dist"
+  publish = "dist/public"
 
 # Redirect all requests to index.html for client-side routing
 [[redirects]]
@@ -16,4 +16,4 @@
 
 # Environment variables (optional)
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
