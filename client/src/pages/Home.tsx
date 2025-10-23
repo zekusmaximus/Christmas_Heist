@@ -15,12 +15,14 @@ export default function Home() {
   const { settings, currentScene, setCurrentScene, unlockScene } = useApp();
   const [showSnow, setShowSnow] = useState(true);
 
-  // Auto-reset on page load for development
+  // Always reset on page load to start fresh
   useEffect(() => {
-    const hasReset = sessionStorage.getItem('hasReset');
-    if (!hasReset) {
-      sessionStorage.setItem('hasReset', 'true');
-      localStorage.clear();
+    localStorage.clear();
+    // Force reload only once per actual page load
+    const reloadFlag = 'pageReloaded_' + Date.now();
+    if (!sessionStorage.getItem(reloadFlag)) {
+      sessionStorage.clear(); // Clear old reload flags
+      sessionStorage.setItem(reloadFlag, 'true');
       window.location.reload();
     }
   }, []);
