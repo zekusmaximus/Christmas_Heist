@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { audioManager } from "@/lib/audioManager";
 import { useApp } from "@/contexts/AppContext";
@@ -9,6 +9,7 @@ interface Scene1Props {
 
 export default function Scene1({ onContinue }: Scene1Props) {
   const { settings } = useApp();
+  const [started, setStarted] = useState(false);
   const [showEnvelope, setShowEnvelope] = useState(false);
   const [showLetter, setShowLetter] = useState(false);
   const [showButton, setShowButton] = useState(false);
@@ -16,20 +17,26 @@ export default function Scene1({ onContinue }: Scene1Props) {
     "Christmas Eve, 9:45 p.m. A mysterious theft has shaken the quiet town of Evergreen Hollow... and only one detective can solve it."
   );
 
-  useEffect(() => {
-    // Try to play intro VO (might be blocked by browser)
+  const handleStart = () => {
+    setStarted(true);
+    
+    // Start background music immediately on user interaction
+    if (settings.audioEnabled) {
+      audioManager.setEnabled(true);
+      audioManager.playBgMusic();
+    }
+    
+    // Play intro VO
     audioManager.playVo("vo_detective_intro", () => {
       setCaption("");
     });
 
     // Show envelope after 3 seconds
-    const timer1 = setTimeout(() => {
+    setTimeout(() => {
       audioManager.playSfx("letter_chime");
       setShowEnvelope(true);
     }, 3000);
-    
-    return () => clearTimeout(timer1);
-  }, []);
+  };
 
   const handleEnvelopeClick = () => {
     // Ensure background music is playing (in case it was blocked)
@@ -50,15 +57,28 @@ export default function Scene1({ onContinue }: Scene1Props) {
         backgroundPosition: "center",
       }}
     >
+      {/* Start Button - shown first to enable audio */}
+      {!started && (
+        <div className="text-center">
+          <Button
+            size="lg"
+            onClick={handleStart}
+            className="cursor-magnify text-2xl px-12 py-8 sparkle"
+          >
+            Begin the Story
+          </Button>
+        </div>
+      )}
+
       {/* Caption */}
-      {caption && settings.audioEnabled && (
+      {started && caption && settings.audioEnabled && (
         <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-full px-4">
           <div className="caption-text">{caption}</div>
         </div>
       )}
 
       {/* Envelope */}
-      {showEnvelope && !showLetter && (
+      {started && showEnvelope && !showLetter && (
         <div className="flex flex-col items-center">
           <div
             className="letter-descend cursor-magnify"
@@ -80,7 +100,7 @@ export default function Scene1({ onContinue }: Scene1Props) {
       )}
 
       {/* Letter content */}
-      {showLetter && (
+      {started && showLetter && (
         <div className="parchment-panel max-w-lg p-8 mx-4 scene-transition">
           <div className="space-y-4 text-lg leading-relaxed">
             <p className="italic">&quot;My dearest detective,</p>
