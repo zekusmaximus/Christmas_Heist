@@ -42,7 +42,7 @@ export default function Scene2({ onContinue }: Scene2Props) {
     <div
       className="relative w-full h-screen flex items-center justify-center"
       style={{
-        backgroundImage: "url(/assets/img/scene2-bg.png)",
+        backgroundImage: "url(/assets/img/scene2-bg.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -66,7 +66,7 @@ export default function Scene2({ onContinue }: Scene2Props) {
           onKeyDown={e => e.key === "Enter" && handleMugClick()}
         >
           <img
-            src="/assets/img/mug.png"
+            src="/assets/img/mug.webp"
             alt="Steaming mug"
             className="w-48 h-auto drop-shadow-2xl hover:scale-105 transition-transform"
           />

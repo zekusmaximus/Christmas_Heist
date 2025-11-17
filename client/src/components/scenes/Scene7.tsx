@@ -63,7 +63,7 @@ export default function Scene7({ onPlayAgain }: Scene7Props) {
           }
         });
       };
-      img.src = "/assets/img/certificate-template.png";
+      img.src = "/assets/img/certificate-template.webp";
     }
   };
 
@@ -71,7 +71,7 @@ export default function Scene7({ onPlayAgain }: Scene7Props) {
     <div
       className="relative w-full h-screen flex items-center justify-center"
       style={{
-        backgroundImage: "url(/assets/img/scene7-bg.png)",
+        backgroundImage: "url(/assets/img/scene7-bg.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -123,7 +123,7 @@ export default function Scene7({ onPlayAgain }: Scene7Props) {
           onKeyDown={e => e.key === "Enter" && setEasterEggRevealed(true)}
         >
           <img
-            src="/assets/img/snowflake-icon.png"
+            src="/assets/img/snowflake-icon.webp"
             alt="Secret"
             className="w-12 h-12"
           />

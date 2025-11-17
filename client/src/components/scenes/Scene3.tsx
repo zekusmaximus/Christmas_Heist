@@ -44,7 +44,7 @@ export default function Scene3({ onContinue }: Scene3Props) {
     <div
       className="relative w-full h-screen flex items-center justify-center"
       style={{
-        backgroundImage: "url(/assets/img/scene3-bg.png)",
+        backgroundImage: "url(/assets/img/scene3-bg.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

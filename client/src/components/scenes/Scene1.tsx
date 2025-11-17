@@ -52,7 +52,7 @@ export default function Scene1({ onContinue }: Scene1Props) {
     <div
       className="relative w-full h-screen flex items-center justify-center"
       style={{
-        backgroundImage: "url(/assets/img/scene1-bg.png)",
+        backgroundImage: "url(/assets/img/scene1-bg.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -88,7 +88,7 @@ export default function Scene1({ onContinue }: Scene1Props) {
             onKeyDown={e => e.key === "Enter" && handleEnvelopeClick()}
           >
             <img
-              src="/assets/img/envelope.png"
+              src="/assets/img/envelope.webp"
               alt="Mysterious envelope"
               className="w-64 h-auto drop-shadow-2xl"
             />
