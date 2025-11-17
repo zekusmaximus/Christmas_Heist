@@ -40,7 +40,7 @@ export default function Scene5({ onContinue }: Scene5Props) {
     <div
       className="relative w-full h-screen flex items-center justify-center"
       style={{
-        backgroundImage: "url(/assets/img/scene5-bg.png)",
+        backgroundImage: "url(/assets/img/scene5-bg.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

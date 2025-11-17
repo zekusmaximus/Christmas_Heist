@@ -46,7 +46,7 @@ export default function Scene6({ onContinue }: Scene6Props) {
     <div
       className="relative w-full h-screen flex items-center justify-center"
       style={{
-        backgroundImage: "url(/assets/img/scene6-bg.png)",
+        backgroundImage: "url(/assets/img/scene6-bg.webp)",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}

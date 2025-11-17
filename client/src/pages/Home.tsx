@@ -3,6 +3,7 @@ import { useApp } from "@/contexts/AppContext";
 import { audioManager } from "@/lib/audioManager";
 import Snowfall from "@/components/Snowfall";
 import SettingsPanel from "@/components/SettingsPanel";
+import LoadingScreen from "@/components/LoadingScreen";
 import Scene1 from "@/components/scenes/Scene1";
 import Scene2 from "@/components/scenes/Scene2";
 import Scene3 from "@/components/scenes/Scene3";
@@ -14,11 +15,7 @@ import Scene7 from "@/components/scenes/Scene7";
 export default function Home() {
   const { settings, currentScene, setCurrentScene, unlockScene } = useApp();
   const [showSnow, setShowSnow] = useState(true);
-
-  // Clear localStorage on every page load to always start fresh
-  useEffect(() => {
-    localStorage.clear();
-  }, []);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     // Enable audio manager based on settings
@@ -38,6 +35,10 @@ export default function Home() {
   const handlePlayAgain = () => {
     setCurrentScene(1);
   };
+
+  if (isLoading) {
+    return <LoadingScreen onComplete={() => setIsLoading(false)} />;
+  }
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-background">

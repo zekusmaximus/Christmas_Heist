@@ -308,6 +308,20 @@
     animation: globe-bloom 1.5s ease-out forwards;
   }
 
+  /* Slow spin animation for loading screen */
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 3s linear infinite;
+  }
+
   /* Caption styling */
   .caption-text {
     background: rgba(29, 29, 31, 0.85);
